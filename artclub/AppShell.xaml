@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="artclub.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:artclub"
+    Shell.FlyoutBehavior="Flyout"
+    Title="artclub">
+
+    <!--<Shell.MenuBarItems>
+        <MenuBarItem Text="Dashboard"></MenuBarItem>
+        <MenuBarItem Text="Members">
+            <MenuFlyoutItem Text="Add New Member" />
+            <MenuFlyoutItem Text="See Members List" />
+        </MenuBarItem>
+        <MenuBarItem Text="Art">
+            <MenuFlyoutItem Text="Add New Art" />
+            <MenuFlyoutItem Text="See Arts" />
+        </MenuBarItem>
+        <MenuBarItem Text="Lottery"></MenuBarItem>
+        <MenuBarItem Text="Settings"></MenuBarItem>
+    </Shell.MenuBarItems>-->
+
+    <!--<ShellContent
+        Title="Home"
+        Icon="home.png"
+        ContentTemplate="{DataTemplate views:HomePage}" />-->
+
+</Shell>

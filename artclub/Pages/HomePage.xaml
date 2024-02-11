@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="artclub.Pages.HomePage"
+             BackgroundColor="LightGray">
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Dashboard"></MenuBarItem>
+        <MenuBarItem Text="Members">
+            <MenuFlyoutItem Text="Add New Member" />
+            <MenuFlyoutItem Text="See Members List" />
+        </MenuBarItem>
+        <MenuBarItem Text="Art">
+            <MenuFlyoutItem Text="Add New Art" />
+            <MenuFlyoutItem Text="See Arts" />
+        </MenuBarItem>
+        <MenuBarItem Text="Lottery"></MenuBarItem>
+        <MenuBarItem Text="Settings"></MenuBarItem>
+    </ContentPage.MenuBarItems>
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to Art Club"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            FontSize="30"
+            TextColor="Black"
+            FontAttributes="Bold"
+            
+            />
+        <Image 
+            Source="ai_monalisa.jpg"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            HeightRequest="600"
+            WidthRequest="600"
+            Margin="20"
+            >
+            <Image.Shadow>
+                <Shadow Brush="Black"
+                Offset="10,10"
+                Opacity="0.8" />
+            </Image.Shadow>
+        </Image>
+
+        <Button 
+            Text="Start"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Clicked="Start_Clicked"
+            Padding="10"
+            Margin="20"
+            WidthRequest="200"
+            FontSize="20"
+            BackgroundColor="FloralWhite"
+            BorderWidth="1"
+            BorderColor="Gray"
+            />
+    </VerticalStackLayout>
+</ContentPage>

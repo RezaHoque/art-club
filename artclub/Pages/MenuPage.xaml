@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="artclub.Pages.MenuPage"
+             BackgroundColor="LightGray">
+    <!--<ContentPage.MenuBarItems>
+        <MenuBarItem Text="Dashboard"></MenuBarItem>
+        <MenuBarItem Text="Members">
+            <MenuFlyoutItem Text="Add New Member" />
+            <MenuFlyoutItem Text="See Members List" />
+        </MenuBarItem>
+        <MenuBarItem Text="Art">
+            <MenuFlyoutItem Text="Add New Art" />
+            <MenuFlyoutItem Text="See Arts" />
+        </MenuBarItem>
+        <MenuBarItem Text="Lottery"></MenuBarItem>
+        <MenuBarItem Text="Settings"></MenuBarItem>
+    </ContentPage.MenuBarItems>-->
+</ContentPage>
