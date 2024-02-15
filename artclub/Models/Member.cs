@@ -15,6 +15,10 @@ namespace artclub.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public int TotalLots { get; set; }
+        public string Company { get; set; }
+        public DateTime MembershipDate { get; set; }
+
 
     }
 }

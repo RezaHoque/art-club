@@ -17,10 +17,11 @@ namespace artclub.Data
         {
             _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory,DatabaseName));
             _connection.CreateTableAsync<Models.Member>();
+            _connection.CreateTableAsync<Models.Art>();
         }
         public async Task<List<Models.Member>> GetMembersAsync()
         {
-            return await _connection.Table<Models.Member>().ToListAsync();
+            return await _connection.Table<Models.Member>().Where(x=>!string.IsNullOrEmpty(x.Name)).ToListAsync();
         }
         public async Task<Member> GetById(int id)
         {
@@ -39,5 +40,9 @@ namespace artclub.Data
             await _connection.DeleteAsync(member);
         }
 
+        public async Task<List<Models.Art>> GetArtsAsync()
+        {
+            return await _connection.Table<Models.Art>().ToListAsync();
+        }
     }
 }

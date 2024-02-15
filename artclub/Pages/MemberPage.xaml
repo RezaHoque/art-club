@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              x:Class="artclub.Pages.MemberPage"
              Title="Member"
              BackgroundColor="LightGray">
+    <ScrollView>
+        
 
     <FlexLayout Direction="Column" JustifyContent="Center" AlignItems="Center" >
         <VerticalStackLayout Padding="10" WidthRequest="700">
@@ -11,30 +14,52 @@
             <Entry Placeholder="Name" x:Name="nameEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
             <Entry Placeholder="Email" x:Name="emailEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
             <Entry Placeholder="Phone" x:Name="phoneEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+            <Entry Placeholder="Company" x:Name="companyEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+            <Entry Placeholder="Membership date" x:Name="dateEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+            <Entry Placeholder="Total lots" x:Name="lotsEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
             <Button Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Margin="20" Padding="10" WidthRequest="200"
-FontSize="20" BackgroundColor="FloralWhite" BorderWidth="1" BorderColor="Gray"/>
+            FontSize="20" BackgroundColor="FloralWhite" BorderWidth="1" BorderColor="Gray"/>
         </VerticalStackLayout>
-        <Label Text="List of Members" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="30" TextColor="Black" FontAttributes="Bold"/>
-        <ListView x:Name="memberListview" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="memberListview_ItemTapped">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <VerticalStackLayout Padding="5">
-                            <Label Text="{Binding Name}" FontSize="17" TextColor="Black"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+        <VerticalStackLayout Padding="10" WidthRequest="1200" HorizontalOptions="Center">
+            <Label Text="List of Members" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="30" TextColor="Black" FontAttributes="Bold"/>
+         
+                <ListView x:Name="memberListview" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="memberListview_ItemTapped"
+    SeparatorColor="Brown" HorizontalOptions="Center" SeparatorVisibility="Default" VerticalScrollBarVisibility="Always" Grid.Row="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <VerticalStackLayout Padding="2">
+                                    <Grid BackgroundColor="GhostWhite" HeightRequest="100" Padding="5" WidthRequest="600">
 
-                                <Label Text="{Binding Email}" FontSize="Small" Grid.Column="0" TextColor="Black"/>
-                                <Label Text="{Binding Phone}" FontSize="Small" Grid.Column="2" TextColor="Black"/>
-                            </Grid>
-                        </VerticalStackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="300"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="50"/>
+
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}" FontSize="20" Grid.Column="0" Grid.Row="0" TextColor="Black" LineBreakMode="WordWrap"/>
+                                        <Label Text="{Binding Company}" FontSize="17" Grid.Column="1" Grid.Row="0" TextColor="Black" LineBreakMode="WordWrap"/>
+                                        <Label Text="{Binding Email}" FontSize="17" Grid.Column="0" Grid.Row="1" TextColor="Black" LineBreakMode="WordWrap"/>
+                                        <Label Text="{Binding Phone}" FontSize="17" Grid.Column="0" Grid.Row="2" TextColor="Black" LineBreakMode="WordWrap"/>
+
+                                        <Label Text="{Binding MembershipDate,StringFormat='{0:dd-MM-yyyy}'}" FontSize="17" Grid.Column="2" Grid.Row="0" TextColor="Black" LineBreakMode="WordWrap"/>
+                                        <Label Text="{Binding TotalLots}" FontSize="17" Grid.Column="3" Grid.Row="0" TextColor="Black" LineBreakMode="WordWrap"/>
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            
+            
+        </VerticalStackLayout>
+      
     </FlexLayout>
+    </ScrollView>
 </ContentPage>

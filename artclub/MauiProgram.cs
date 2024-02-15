@@ -1,6 +1,7 @@
 ﻿using artclub.Data;
 using artclub.Pages;
 using Microsoft.Extensions.Logging;
+using UraniumUI;
 
 namespace artclub
 {
@@ -15,12 +16,15 @@ namespace artclub
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFontAwesomeIconFonts();
                 });
             builder.Services.AddSingleton<DbService>();
             builder.Services.AddTransient<HomePage>();
+            builder.UseUraniumUI();
+            builder.UseUraniumUIMaterial();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
