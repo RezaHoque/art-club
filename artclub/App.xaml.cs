@@ -5,12 +5,12 @@ namespace artclub
     public partial class App : Application
     {
        
-        public App(HomePage mainPage)
+        public App()
         {
             InitializeComponent();
 
             
-            MainPage = new NavigationPage(mainPage);
+            MainPage = new AppShell();
         }
     }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="artclub.Pages.HomePage"
              BackgroundColor="LightGray">
-    <ContentPage.MenuBarItems>
+    <!--<ContentPage.MenuBarItems>
         <MenuBarItem Text="Dashboard"></MenuBarItem>
         <MenuBarItem Text="Members">
             <MenuFlyoutItem Text="Add New Member" />
@@ -15,7 +15,7 @@
         </MenuBarItem>
         <MenuBarItem Text="Lottery"></MenuBarItem>
         <MenuBarItem Text="Settings"></MenuBarItem>
-    </ContentPage.MenuBarItems>
+    </ContentPage.MenuBarItems>-->
     <VerticalStackLayout>
         <Label 
             Text="Welcome to Art Club"

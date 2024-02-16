@@ -42,7 +42,19 @@ namespace artclub.Data
 
         public async Task<List<Models.Art>> GetArtsAsync()
         {
-            return await _connection.Table<Models.Art>().ToListAsync();
+            return await _connection.Table<Models.Art>().Where(x=>!string.IsNullOrEmpty(x.ImageUrl)).ToListAsync();
+        }
+        public async Task CreateArtAsync(Art art)
+        {
+            await _connection.InsertAsync(art);
+        }
+        public async Task UpdateArtAsync(Art art)
+        {
+            await _connection.UpdateAsync(art);
+        }
+        public async Task DeleteArtAsync(Art art)
+        {
+            await _connection.DeleteAsync(art);
         }
     }
 }

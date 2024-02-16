@@ -57,10 +57,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\Font Awesome 6 Brands-Regular-400.otf" />
+	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Regular-400.otf" />
+	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Solid-900.otf" />
 	  <None Remove="Resources\Images\ai_monalisa.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="DevExpress.Maui.DataGrid" Version="23.2.4" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
@@ -84,9 +88,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\MenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

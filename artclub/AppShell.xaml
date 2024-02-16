@@ -3,27 +3,38 @@
     x:Class="artclub.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:artclub"
-    Shell.FlyoutBehavior="Flyout"
-    Title="artclub">
+    xmlns:local="clr-namespace:artclub.Pages"
+    xmlns:models="clr-namespace:artclub.Models"
+    Shell.BackgroundColor="Black"
+    Shell.ForegroundColor="DarkOrange"
+    Shell.FlyoutBehavior="Disabled">
 
-    <!--<Shell.MenuBarItems>
-        <MenuBarItem Text="Dashboard"></MenuBarItem>
-        <MenuBarItem Text="Members">
-            <MenuFlyoutItem Text="Add New Member" />
-            <MenuFlyoutItem Text="See Members List" />
-        </MenuBarItem>
-        <MenuBarItem Text="Art">
-            <MenuFlyoutItem Text="Add New Art" />
-            <MenuFlyoutItem Text="See Arts" />
-        </MenuBarItem>
-        <MenuBarItem Text="Lottery"></MenuBarItem>
-        <MenuBarItem Text="Settings"></MenuBarItem>
-    </Shell.MenuBarItems>-->
+    <TabBar>
+        <Tab Title="Home">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FASolid" Glyph="{x:Static models:FaIcons.HouseUser}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}"  Route="HomePage"/>
+        </Tab>
+        <Tab Title="Members">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FASolid" Glyph="{x:Static models:FaIcons.Users}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:MemberPage}" Route="MemberPage" />
+        </Tab>
+        <Tab Title="Arts">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FASolid" Glyph="{x:Static models:FaIcons.Paintbrush}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:ArtPage}" Route="ArtPage" />
+        </Tab>
+        <Tab Title="Lottery">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FASolid" Glyph="{x:Static models:FaIcons.CircleDollarToSlot}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:MemberPage}" Route="MemberPage" />
+        </Tab>
 
-    <!--<ShellContent
-        Title="Home"
-        Icon="home.png"
-        ContentTemplate="{DataTemplate views:HomePage}" />-->
+    </TabBar>
 
 </Shell>

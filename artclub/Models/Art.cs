@@ -9,18 +9,22 @@ using ReactiveUI.Fody.Helpers;
 namespace artclub.Models
 {
     [Table("Arts")]
-    public class Art:ReactiveUI.ReactiveObject
+    public class Art
     {
         [PrimaryKey, AutoIncrement]
-        [Reactive]
+
         public int Id { get; set; }
-        [Reactive]
+
         public string Title { get; set; }
-        [Reactive]
+
         public string Artist { get; set; }
-        [Reactive]
+
         public string ImageUrl { get; set; }
-        [Reactive]
+        public string Price { get; set; }
+        public string Size { get; set; }
+        public string Description { get; set; }
+        public string Batch { get; set; }
+ 
         public DateTime ActionDate { get; set; }
     }
 }

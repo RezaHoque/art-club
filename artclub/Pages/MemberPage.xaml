@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              x:Class="artclub.Pages.MemberPage"
-             Title="Member"
+             xmlns:models="clr-namespace:artclub.Models"
              BackgroundColor="LightGray">
     <ScrollView>
         
@@ -15,9 +15,9 @@
             <Entry Placeholder="Email" x:Name="emailEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
             <Entry Placeholder="Phone" x:Name="phoneEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
             <Entry Placeholder="Company" x:Name="companyEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
-            <Entry Placeholder="Membership date" x:Name="dateEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+            <Entry Placeholder="Membership date. fx: dd-MM-yyyy" x:Name="dateEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
             <Entry Placeholder="Total lots" x:Name="lotsEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
-            <Button Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Margin="20" Padding="10" WidthRequest="200"
+                <Button Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Margin="20" Padding="10" WidthRequest="200"
             FontSize="20" BackgroundColor="FloralWhite" BorderWidth="1" BorderColor="Gray"/>
         </VerticalStackLayout>
         <VerticalStackLayout Padding="10" WidthRequest="1200" HorizontalOptions="Center">

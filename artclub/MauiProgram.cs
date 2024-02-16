@@ -1,5 +1,7 @@
 ﻿using artclub.Data;
 using artclub.Pages;
+using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Storage;
 using Microsoft.Extensions.Logging;
 using UraniumUI;
 
@@ -16,10 +18,16 @@ namespace artclub
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                    fonts.AddFontAwesomeIconFonts();
+                    fonts.AddFont("Font Awesome 6 Free-Solid-900.otf", "FASolid");
                 });
+            builder.UseMauiCommunityToolkit();
+            builder.Services.AddSingleton<IFileSaver>(FileSaver.Default);
+
+
             builder.Services.AddSingleton<DbService>();
             builder.Services.AddTransient<HomePage>();
+            builder.Services.AddTransient<MemberPage>();
+            builder.Services.AddTransient<ArtPage>();
             builder.UseUraniumUI();
             builder.UseUraniumUIMaterial();
 

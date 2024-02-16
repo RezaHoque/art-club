@@ -2,15 +2,83 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="artclub.Pages.ArtPage"
-             Title="ArtPage"
              BackgroundColor="LightGray">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-       
+    <ScrollView>
+        <FlexLayout Direction="Column" JustifyContent="Center" AlignItems="Center" >
+            <VerticalStackLayout WidthRequest="700">
+                <Label Text="Add Art" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="30" TextColor="Black" FontAttributes="Bold"/>
+                <Entry Placeholder="Title" x:Name="titleEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Artist" x:Name="artistEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Description" x:Name="descriptionEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Price" x:Name="priceEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Size in CM. Fx: 50x50" x:Name="sizeEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+                <Entry Placeholder="Batch. For ex: 14th March 2024 " x:Name="batchEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
+                <Button Text="Please select an Image" x:Name="filePickerButton" Clicked="filePickerButton_Clicked" Margin="5" Padding="5"
+                        BackgroundColor="Gainsboro" BorderWidth="1" BorderColor="Gray"/>
+                <Image x:Name="imagePreview" Aspect="AspectFit"/>
+                <Label TextColor="Black" x:Name="filePathLabel"/>
+                <Button Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Margin="20" Padding="10" WidthRequest="200"
+                FontSize="20" BackgroundColor="FloralWhite" BorderWidth="1" BorderColor="Gray"/>
+            </VerticalStackLayout>
 
-    </VerticalStackLayout>
-    
+            <VerticalStackLayout WidthRequest="700">
+                <CollectionView x:Name="artCollection" Margin="10">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10">
+                                <Grid BackgroundColor="GhostWhite" HeightRequest="160" Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="50" />
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="150" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.RowSpan="3"
+                                   Source="{Binding ImageUrl}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="150"
+                                   WidthRequest="150" 
+                                   />
+                                    <Label Grid.Row="0"
+                                    Grid.Column="1"
+                                       Padding="2"
+                                   FontAttributes="Bold"
+                                      Text="{Binding Artist}"
+                                   LineBreakMode="TailTruncation" 
+                                       TextColor="Black"/>
+
+                                    <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Price}"
+                                   LineBreakMode="TailTruncation"
+                                   FontAttributes="Italic"
+                                   VerticalOptions="End" 
+                                       TextColor="Black"/>
+                                    <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding Price}"
+                                       LineBreakMode="TailTruncation"
+                                       FontAttributes="Italic"
+                                       VerticalOptions="End" 
+                                           TextColor="Black"/>
+                                    <Label Grid.Row="2"
+                                    Grid.Column="1" 
+                                       Text="{Binding Description}"
+                                       FontAttributes="Bold" LineBreakMode="TailTruncation" 
+                                       TextColor="Black"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </FlexLayout>
+        </ScrollView>
+
 </ContentPage>
