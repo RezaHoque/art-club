@@ -84,4 +84,30 @@ public partial class ArtPage : ContentPage
             filePathLabel.Text = result.FullPath;
         }
     }
+
+    private async void artCollection_ItemTapped(object sender, ItemTappedEventArgs e)
+    {
+        var art = e.Item as Models.Art;
+        var action = await DisplayActionSheet("Actions", "Cancel", null, "Edit", "Delete");
+        switch (action)
+        {
+            case "Edit":
+                _editArtId = art.Id;
+                titleEntryField.Text = art.Title;
+                artistEntryField.Text = art.Artist;
+                priceEntryField.Text = art.Price;
+                sizeEntryField.Text = art.Size;
+                descriptionEntryField.Text = art.Description;
+                batchEntryField.Text = art.Batch;
+                filePathLabel.Text = art.ImageUrl;
+                imagePreview.Source = ImageSource.FromFile(art.ImageUrl);
+                
+                break;
+            case "Delete":
+                await _dbService.DeleteArtAsync(art);
+                artCollection.ItemsSource = await _dbService.GetMembersAsync();
+                break;
+        }
+
+    }
 }

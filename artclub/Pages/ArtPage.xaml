@@ -2,7 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="artclub.Pages.ArtPage"
+              xmlns:local="clr-namespace:artclub.Converters"
              BackgroundColor="LightGray">
+    <ContentPage.Resources>
+        <local:ConcatenateConverter x:Key="ConcatenateConverter"/>
+    </ContentPage.Resources>
+
     <ScrollView>
         <FlexLayout Direction="Column" JustifyContent="Center" AlignItems="Center" >
             <VerticalStackLayout WidthRequest="700">
@@ -22,12 +27,14 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout WidthRequest="700">
-                <CollectionView x:Name="artCollection" Margin="10">
-                    <CollectionView.ItemsLayout>
+                <ListView x:Name="artCollection" Margin="10" FlexLayout.Grow="1" HasUnevenRows="True" VerticalScrollBarVisibility="Always"
+                          ItemTapped="artCollection_ItemTapped">
+                    <!--<CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
+                    </CollectionView.ItemsLayout>-->
+                    <ListView.ItemTemplate>
                         <DataTemplate>
+                            <ViewCell>
                             <VerticalStackLayout Padding="10">
                                 <Grid BackgroundColor="GhostWhite" HeightRequest="160" Padding="5">
                                     <Grid.RowDefinitions>
@@ -46,37 +53,58 @@
                                    WidthRequest="150" 
                                    />
                                     <Label Grid.Row="0"
-                                    Grid.Column="1"
-                                       Padding="2"
-                                   FontAttributes="Bold"
-                                      Text="{Binding Artist}"
-                                   LineBreakMode="TailTruncation" 
-                                       TextColor="Black"/>
+                                        Grid.Column="1"
+                                        Padding="1"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation" 
+                                        TextColor="Black">
+                                        <Label.Text>
+                                            <MultiBinding Converter="{StaticResource ConcatenateConverter}">
+                                                <Binding Path="Id"/>
+                                                <Binding Path="Artist"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
 
                                     <Label Grid.Row="1"
-                                   Grid.Column="1"
-                                   Text="{Binding Price}"
-                                   LineBreakMode="TailTruncation"
-                                   FontAttributes="Italic"
-                                   VerticalOptions="End" 
-                                       TextColor="Black"/>
-                                    <Label Grid.Row="1"
                                        Grid.Column="1"
-                                       Text="{Binding Price}"
                                        LineBreakMode="TailTruncation"
-                                       FontAttributes="Italic"
                                        VerticalOptions="End" 
-                                           TextColor="Black"/>
+                                       TextColor="Black">
+                                        <Label.Text>
+                                            <MultiBinding Converter="{StaticResource ConcatenateConverter}">
+                                                <Binding Path="Title"/>
+                                                <Binding Path="Description"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+
                                     <Label Grid.Row="2"
-                                    Grid.Column="1" 
-                                       Text="{Binding Description}"
-                                       FontAttributes="Bold" LineBreakMode="TailTruncation" 
-                                       TextColor="Black"/>
+                                        Grid.Column="1" 
+                                        FontAttributes="Bold" LineBreakMode="TailTruncation" 
+                                        TextColor="Black">
+                                        <Label.Text>
+                                            <MultiBinding Converter="{StaticResource ConcatenateConverter}" ConverterParameter="Price: ">
+                                                <Binding Path="Price"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                    <Label Grid.Column="1"
+                                           Grid.Row="1"
+                                            FontAttributes="Bold" LineBreakMode="TailTruncation" 
+                                            TextColor="Black">
+                                            <Label.Text>
+                                                <MultiBinding Converter="{StaticResource ConcatenateConverter}" ConverterParameter="Size: ">
+                                                    <Binding Path="Size"/>
+                                                </MultiBinding>
+                                            </Label.Text>
+                                    </Label>
                                 </Grid>
                             </VerticalStackLayout>
+                            </ViewCell>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </ListView.ItemTemplate>
+                </ListView>
             </VerticalStackLayout>
         </FlexLayout>
         </ScrollView>
