@@ -40,7 +40,12 @@
                 Opacity="0.8" />
             </Image.Shadow>
         </Image>
-
+        <Label x:Name="appInfoLabel"
+               TextColor="Black"
+               VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+               FontAttributes="Italic"
+        />
         <Button 
             Text="Start"
             VerticalOptions="Center" 
@@ -53,6 +58,7 @@
             BackgroundColor="FloralWhite"
             BorderWidth="1"
             BorderColor="Gray"
+            TextColor="Black"
             />
     </VerticalStackLayout>
 </ContentPage>

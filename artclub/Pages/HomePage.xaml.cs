@@ -9,6 +9,10 @@ public partial class HomePage : ContentPage
 	{
 		InitializeComponent();
 		_dbService = new DbService();
+
+		var appVersion=AppInfo.Current.Version;
+		
+		appInfoLabel.Text = $"Version: {appVersion}";
 	}
 	async void Start_Clicked(object sender, EventArgs e)
 	{

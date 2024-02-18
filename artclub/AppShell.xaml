@@ -34,6 +34,12 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:MemberPage}" Route="MemberPage" />
         </Tab>
+        <Tab Title="About">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FASolid" Glyph="{x:Static models:FaIcons.Code}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:About}" Route="About" />
+        </Tab>
 
     </TabBar>
 
