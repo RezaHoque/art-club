@@ -23,7 +23,7 @@
                 <Image x:Name="imagePreview" Aspect="AspectFit"/>
                 <Label TextColor="Black" x:Name="filePathLabel"/>
                 <Button Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Margin="20" Padding="10" WidthRequest="200"
-                FontSize="20" BackgroundColor="FloralWhite" BorderWidth="1" BorderColor="Gray"/>
+                FontSize="20" BackgroundColor="FloralWhite" BorderWidth="1" BorderColor="Gray" TextColor="Black"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout WidthRequest="700">
@@ -44,7 +44,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="150" />
-                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="250" />
                                     </Grid.ColumnDefinitions>
                                     <Image Grid.RowSpan="3"
                                    Source="{Binding ImageUrl}"

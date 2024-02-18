@@ -3,7 +3,6 @@ using artclub.Pages;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Storage;
 using Microsoft.Extensions.Logging;
-using UraniumUI;
 
 namespace artclub
 {
@@ -28,8 +27,8 @@ namespace artclub
             builder.Services.AddTransient<HomePage>();
             builder.Services.AddTransient<MemberPage>();
             builder.Services.AddTransient<ArtPage>();
-            builder.UseUraniumUI();
-            builder.UseUraniumUIMaterial();
+            //builder.UseUraniumUI();
+           // builder.UseUraniumUIMaterial();
 
 #if DEBUG
             builder.Logging.AddDebug();

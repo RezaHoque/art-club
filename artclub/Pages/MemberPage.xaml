@@ -18,7 +18,7 @@
             <Entry Placeholder="Membership date. fx: dd-MM-yyyy" x:Name="dateEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
             <Entry Placeholder="Total lots" x:Name="lotsEntryField" BackgroundColor="WhiteSmoke" Margin="5" TextColor="Black"/>
                 <Button Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Margin="20" Padding="10" WidthRequest="200"
-            FontSize="20" BackgroundColor="FloralWhite" BorderWidth="1" BorderColor="Gray"/>
+            FontSize="20" BackgroundColor="FloralWhite" BorderWidth="1" BorderColor="Gray" TextColor="Black"/>
         </VerticalStackLayout>
         <VerticalStackLayout Padding="10" WidthRequest="1200" HorizontalOptions="Center">
             <Label Text="List of Members" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="30" TextColor="Black" FontAttributes="Bold"/>

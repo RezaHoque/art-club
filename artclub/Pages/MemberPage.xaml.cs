@@ -21,9 +21,9 @@ public partial class MemberPage : ContentPage
         
         if (_editMemberId == 0)
 		{
-            if(string.IsNullOrEmpty(nameEntryField.Text) || string.IsNullOrEmpty(emailEntryField.Text))
+            if(string.IsNullOrEmpty(nameEntryField.Text) || string.IsNullOrEmpty(emailEntryField.Text) || string.IsNullOrEmpty(dateEntryField.Text))
             {
-                await DisplayAlert("Error", "Name and Email are required", "Ok");
+                await DisplayAlert("Error", "Name, Email and Membeship date are required", "Ok");
                 return;
             }
           await _dbService.Create(new Models.Member

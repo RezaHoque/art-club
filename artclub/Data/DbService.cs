@@ -15,10 +15,16 @@ namespace artclub.Data
 
         public DbService()
         {
-            _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory,DatabaseName));
-            _connection.CreateTableAsync<Models.Member>();
-            _connection.CreateTableAsync<Models.Art>();
+            //var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            //string dbPath = Path.Combine(appDataPath, "VeluxArtClub", DatabaseName);
+            _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.Current.AppDataDirectory,DatabaseName));
+            //_connection = new SQLiteAsyncConnection(dbPath);
+
+             _connection.CreateTableAsync<Models.Member>();
+             _connection.CreateTableAsync<Models.Art>();
+           
         }
+      
         public async Task<List<Models.Member>> GetMembersAsync()
         {
             return await _connection.Table<Models.Member>().Where(x=>!string.IsNullOrEmpty(x.Name)).ToListAsync();
