@@ -1,4 +1,5 @@
 using artclub.Data;
+using artclub.Models;
 
 namespace artclub.Pages;
 
@@ -24,7 +25,7 @@ public partial class LotteryPage : ContentPage
         lotterySpinner.IsVisible=true;
         //lotterySpinner.Color= Color.FromRgba(0,0,0,0.5);
 
-        var members=await _dbService.GetMembersAsync();
+        var members=await _dbService.GetMembersForDrawAsync(DateTime.Now.Year.ToString());
         //delay for 5 seconds
         await Task.Delay(5000);
         if(members.Count==0)
@@ -44,6 +45,15 @@ public partial class LotteryPage : ContentPage
                 lotterySpinner.IsRunning=false;
                 lotterySpinner.IsVisible=false;
                 winnerLabel.Text=member.Name;
+
+                //Add the winner to the lottery draw table
+                var lotteryDraw=new LotteryDraw
+                {
+                    DrawDate=DateTime.Now,
+                    WinnerId=member.Id.ToString(),
+                    BatchId=DateTime.Now.Year.ToString()
+                };
+                await _dbService.CreateDrawAsync(lotteryDraw);
                 return;
             }
         }

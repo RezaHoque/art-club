@@ -20,5 +20,6 @@
             x:Name="winnerLabel"
             TextColor="Black"
             FontSize="30"/>
+        
     </VerticalStackLayout>
 </ContentPage>

@@ -22,9 +22,25 @@ namespace artclub.Data
 
              _connection.CreateTableAsync<Models.Member>();
              _connection.CreateTableAsync<Models.Art>();
+             _connection.CreateTableAsync<Models.LotteryDraw>();
            
         }
-      
+        //Member
+        public async Task<List<Models.Member>> GetMembersForDrawAsync(string batch)
+        {
+           var members= await _connection.Table<Models.Member>().Where(x=>!string.IsNullOrEmpty(x.Name)).ToListAsync();
+           var membersForDraw=new List<Models.Member>();
+           foreach(var member in members)
+            {
+                var draws=await _connection.Table<Models.LotteryDraw>().Where(x=>x.BatchId==batch).ToListAsync();
+                if(!draws.Any(x=>x.WinnerId==member.Id.ToString()))
+                {
+                    membersForDraw.Add(member);
+                }
+              
+            }
+           return membersForDraw;
+        }
         public async Task<List<Models.Member>> GetMembersAsync()
         {
             return await _connection.Table<Models.Member>().Where(x=>!string.IsNullOrEmpty(x.Name)).ToListAsync();
@@ -45,7 +61,7 @@ namespace artclub.Data
         {
             await _connection.DeleteAsync(member);
         }
-
+        //Art
         public async Task<List<Models.Art>> GetArtsAsync()
         {
             return await _connection.Table<Models.Art>().Where(x=>!string.IsNullOrEmpty(x.ImageUrl)).ToListAsync();
@@ -62,5 +78,19 @@ namespace artclub.Data
         {
             await _connection.DeleteAsync(art);
         }
+        //Lottery draw
+        public async Task<List<LotteryDraw>> GetDrawsAsync()
+        {
+            return await _connection.Table<LotteryDraw>().ToListAsync();
+        }
+        public async Task CreateDrawAsync(LotteryDraw draw)
+        {
+            await _connection.InsertAsync(draw);
+        }
+        public async Task UpdateDrawAsync(LotteryDraw draw)
+        {
+            await _connection.UpdateAsync(draw);
+        }
+
     }
 }
