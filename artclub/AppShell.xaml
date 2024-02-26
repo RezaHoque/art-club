@@ -32,7 +32,7 @@
             <Tab.Icon>
                 <FontImageSource FontFamily="FASolid" Glyph="{x:Static models:FaIcons.CircleDollarToSlot}" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:MemberPage}" Route="MemberPage" />
+            <ShellContent ContentTemplate="{DataTemplate local:LotteryPage}" Route="LotteryPage" />
         </Tab>
         <Tab Title="About">
             <Tab.Icon>

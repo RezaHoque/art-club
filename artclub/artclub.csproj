@@ -49,7 +49,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\articon.svg"/>
+		<MauiIcon Include="Resources\AppIcon\articon.svg" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -93,6 +93,9 @@
 	  <MauiXaml Update="Pages\ArtPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\LotteryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MemberPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -109,6 +112,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\LotteryPage.xaml.cs">
+	    <DependentUpon>LotteryPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\MemberPage.xaml.cs">
 	    <DependentUpon>MemberPage.xaml</DependentUpon>
 	  </Compile>

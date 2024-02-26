@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="artclub.Pages.LotteryPage"
+             BackgroundColor="LightGray">
+    <VerticalStackLayout WidthRequest="700">
+        <Label 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            x:Name="introLabel"
+            TextColor="Black"/>
+        
+        <Button Text="Draw" Clicked="drawButtonClicked" Margin="20" Padding="15"
+                BorderWidth="2" BorderColor="WhiteSmoke" BackgroundColor="DarkRed"
+                TextColor="WhiteSmoke" FontSize="25" WidthRequest="300"></Button>
+        <ActivityIndicator x:Name="lotterySpinner" Color="OrangeRed" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Scale="2" />
+        <Label 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            x:Name="winnerLabel"
+            TextColor="Black"
+            FontSize="30"/>
+    </VerticalStackLayout>
+</ContentPage>
