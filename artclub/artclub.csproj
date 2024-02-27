@@ -96,6 +96,9 @@
 	  <MauiXaml Update="Pages\LotteryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\LotteryResultPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MemberPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

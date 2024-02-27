@@ -1,11 +1,17 @@
+using artclub.Data;
+
 namespace artclub.Pages;
 
 public partial class About : ContentPage
 {
-	public About()
+    private readonly DbService _dbService;
+    public About(DbService dbService)
 	{
+		_dbService = dbService;
+		
 		InitializeComponent();
         var appVersion = AppInfo.Current.Version;
+
 		appVersionLabel.Text = $"App Version: {appVersion}";
 
 		var author = "Rezaul Hoque";

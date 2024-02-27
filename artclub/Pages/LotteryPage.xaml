@@ -21,5 +21,16 @@
             TextColor="Black"
             FontSize="30"/>
         
+        <HorizontalStackLayout HorizontalOptions="Center" WidthRequest="700">
+            <Button x:Name="pickArtButton"  Margin="5" Padding="5"
+                BorderWidth="1" BorderColor="WhiteSmoke" BackgroundColor="DarkOliveGreen"
+                TextColor="WhiteSmoke" FontSize="20" WidthRequest="150" Text="Choose Art" Clicked="pickArtButtonClicked"/>
+            <Button x:Name="absentButton"  Margin="5" Padding="5"
+                BorderWidth="1" BorderColor="WhiteSmoke" BackgroundColor="DarkOliveGreen"
+                TextColor="WhiteSmoke" FontSize="20" WidthRequest="150" Text="Absent" Clicked="absentButtonClicked"/>
+            <Button x:Name="notInterestedButton"  Margin="5" Padding="5"
+                BorderWidth="1" BorderColor="WhiteSmoke" BackgroundColor="DarkOliveGreen"
+                TextColor="WhiteSmoke" FontSize="20" WidthRequest="150" Text="Not Interested" Clicked="notInterestedButtonClicked"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

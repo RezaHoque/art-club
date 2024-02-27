@@ -33,7 +33,7 @@ namespace artclub.Data
            foreach(var member in members)
             {
                 var draws=await _connection.Table<Models.LotteryDraw>().Where(x=>x.BatchId==batch).ToListAsync();
-                if(!draws.Any(x=>x.WinnerId==member.Id.ToString()))
+                if(!draws.Any(x=>x.WinnerId==member.Id))
                 {
                     membersForDraw.Add(member);
                 }
@@ -83,6 +83,10 @@ namespace artclub.Data
         {
             return await _connection.Table<LotteryDraw>().ToListAsync();
         }
+        public async Task<LotteryDraw> GetDrawsAsync(int memberId, string batch)
+        {
+            return await _connection.Table<LotteryDraw>().Where(x => x.BatchId == batch && x.WinnerId == memberId).FirstOrDefaultAsync();
+        }
         public async Task CreateDrawAsync(LotteryDraw draw)
         {
             await _connection.InsertAsync(draw);
@@ -91,6 +95,7 @@ namespace artclub.Data
         {
             await _connection.UpdateAsync(draw);
         }
+        
 
     }
 }

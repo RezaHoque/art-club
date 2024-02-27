@@ -6,11 +6,15 @@ namespace artclub.Pages;
 public partial class LotteryPage : ContentPage
 {
     private readonly DbService _dbService;
+    private Member _winnerMember=new Member();
     public LotteryPage(DbService dbService)
 	{
 		InitializeComponent();
         _dbService = dbService;
         introLabel.Text=$"Welcome to the lottery! Today is {DateTime.Now.ToString("dd - MMM - yyyy")}";
+        pickArtButton.IsVisible=false;
+        absentButton.IsVisible=false;
+        notInterestedButton.IsVisible=false;
 	}
     //Randomly select a winner from the members list. Each member object has a TotalLots property that represents the number of lottery tickets they have.
     //The probability of a member being selected is proportional to the number of lottery tickets they have.
@@ -45,15 +49,20 @@ public partial class LotteryPage : ContentPage
                 lotterySpinner.IsRunning=false;
                 lotterySpinner.IsVisible=false;
                 winnerLabel.Text=member.Name;
+                _winnerMember=member;
 
                 //Add the winner to the lottery draw table
                 var lotteryDraw=new LotteryDraw
                 {
                     DrawDate=DateTime.Now,
-                    WinnerId=member.Id.ToString(),
+                    WinnerId=member.Id,
                     BatchId=DateTime.Now.Year.ToString()
                 };
                 await _dbService.CreateDrawAsync(lotteryDraw);
+
+                pickArtButton.IsVisible = true;
+                absentButton.IsVisible = true;
+                notInterestedButton.IsVisible = true;
                 return;
             }
         }
@@ -61,5 +70,42 @@ public partial class LotteryPage : ContentPage
 
 
 
+    }
+
+    private async void absentButtonClicked(object sender, EventArgs e)
+    {
+        bool answer = await DisplayAlert("Are you sure?", $"Are you sure {_winnerMember.Name} is absent today", "Yes", "No");
+        if(answer)
+        {
+            var draw=await _dbService.GetDrawsAsync(_winnerMember.Id,DateTime.Now.Year.ToString());
+            if(draw is not null)
+            {
+                draw.IsAbsent=true;
+                await _dbService.UpdateDrawAsync(draw);
+                pickArtButton.IsVisible = false;
+                absentButton.IsVisible = false;
+                notInterestedButton.IsVisible = false;
+            }
+        }
+    }
+    private async void pickArtButtonClicked(object sender, EventArgs e)
+    {
+        
+    }
+    private async void notInterestedButtonClicked(object sender, EventArgs e)
+    {
+        bool answer = await DisplayAlert("Are you sure?", $"Are you sure {_winnerMember.Name} is not interested to select any art", "Yes", "No");
+        if (answer)
+        {
+            var draw = await _dbService.GetDrawsAsync(_winnerMember.Id, DateTime.Now.Year.ToString());
+            if (draw is not null)
+            {
+                draw.IsNotInterested = true;
+                await _dbService.UpdateDrawAsync(draw);
+                pickArtButton.IsVisible = false;
+                absentButton.IsVisible = false;
+                notInterestedButton.IsVisible = false;
+            }
+        }
     }
 }

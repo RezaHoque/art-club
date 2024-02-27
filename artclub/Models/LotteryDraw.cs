@@ -11,7 +11,7 @@ namespace artclub.Models
         public int Id { get; set; }
         public DateTime DrawDate { get; set; }
     
-        public string WinnerId { get; set; }
+        public int WinnerId { get; set; }
         public bool IsAbsent { get; set; }
         public bool IsNotInterested{ get; set; }
         public bool PickedArt { get; set; }
