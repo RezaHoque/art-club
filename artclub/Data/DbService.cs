@@ -66,6 +66,21 @@ namespace artclub.Data
         {
             return await _connection.Table<Models.Art>().Where(x=>!string.IsNullOrEmpty(x.ImageUrl)).ToListAsync();
         }
+        public async Task<List<Art>> GetArtsForSelectionAsync()
+        {
+            //return a list of art objects that is not present in LotteryDraw table
+            var arts=await _connection.Table<Models.Art>().Where(x=>!string.IsNullOrEmpty(x.ImageUrl)).ToListAsync();
+            var draws=await _connection.Table<Models.LotteryDraw>().ToListAsync();
+            var artForSelection=new List<Models.Art>();
+            foreach(var art in arts)
+            {
+                if(!draws.Any(x=>x.ArtId==art.Id))
+                {
+                    artForSelection.Add(art);
+                }
+            }
+            return artForSelection;
+        }
         public async Task CreateArtAsync(Art art)
         {
             await _connection.InsertAsync(art);
@@ -95,7 +110,28 @@ namespace artclub.Data
         {
             await _connection.UpdateAsync(draw);
         }
-        
+
+        public async Task<List<Models.WinnerViewModel>> GetWinnersAsync()
+        {
+            var winners=new List<Models.WinnerViewModel>();
+            var draws=await _connection.Table<Models.LotteryDraw>().Where(x=>x.WinnerId!=0).ToListAsync();
+            foreach(var draw in draws)
+            {
+                var member=await GetById(draw.WinnerId);
+                var art=await _connection.Table<Models.Art>().Where(x=>x.Id==draw.ArtId).FirstOrDefaultAsync();
+                winners.Add(new Models.WinnerViewModel
+                {
+                    MemberName=member.Name,
+                    MemberId=member.Id,
+                    ArtId=art != null?art.Id.ToString():"N/A",
+                    ArtSrc=art?.ImageUrl,
+                    IsAbsent=draw.IsAbsent,
+                    IsNotInterested=draw.IsNotInterested,
+                    BatchId=draw.BatchId,
+                });
+            }
+            return winners;
+        }
 
     }
 }

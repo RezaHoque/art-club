@@ -2,9 +2,73 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="artclub.Pages.LotteryResultPage"
-             BackgroundColor="LightGray">
+             BackgroundColor="LightGray"
+             >
     <ScrollView>
-        
+        <VerticalStackLayout Padding="10" WidthRequest="1200" HorizontalOptions="Center">
+            <Label VerticalOptions="Center"  HorizontalOptions="Center" FontSize="30" TextColor="Black" FontAttributes="Bold" Text="Winners"/>
+            <Grid BackgroundColor="GhostWhite" Padding="5" WidthRequest="800">
+                <!-- Column headers -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <!-- Member ID column width -->
+                    <ColumnDefinition Width="200"/>
+                    <!-- Member Name column width -->
+                    <ColumnDefinition Width="150"/>
+                    <!-- Batch ID column width -->
+                    <!-- Add more ColumnDefinition elements with appropriate widths -->
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Batch ID" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
+                <Label Text="Member ID" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                <Label Text="Member Name" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
+                
+                <Label Text="Art ID" Grid.Row="0" Grid.Column="3" TextColor="Black"/>
+                <Label Text="Absent" Grid.Row="0" Grid.Column="4" TextColor="Black"/>
+                <Label Text="Not interested" Grid.Row="0" Grid.Column="5" TextColor="Black"/>
+                <!-- Add more labels for other column headers as needed -->
+
+                <!-- ListView with data -->
+                <ListView x:Name="winnerListView" Grid.Row="1" Grid.ColumnSpan="6" Margin="0,20,0,0" HorizontalOptions="Center" VerticalScrollBarVisibility="Always">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <!-- Member ID column width -->
+                                        <ColumnDefinition Width="200"/>
+                                        <!-- Member Name column width -->
+                                        <ColumnDefinition Width="150"/>
+                                        <!-- Batch ID column width -->
+                                        <!-- Add more ColumnDefinition elements with appropriate widths -->
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding BatchId}" Grid.Column="0" TextColor="Black"/>
+                                    <Label Text="{Binding MemberId}" Grid.Column="1" TextColor="Black"/>
+                                    <Label Text="{Binding MemberName}" Grid.Column="2" TextColor="Black"/>
+                                    <Label Text="{Binding ArtId}" Grid.Column="3" TextColor="Black"/>
+                                    <Label Text="{Binding IsAbsent}" Grid.Column="4" TextColor="Black"/>
+                                    <Label Text="{Binding IsNotInterested}" Grid.Column="5" TextColor="Black"/>
+                                    
+                                    
+                                    <!-- Add more labels for other properties as needed -->
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </VerticalStackLayout>
+
     </ScrollView>
 
 </ContentPage>

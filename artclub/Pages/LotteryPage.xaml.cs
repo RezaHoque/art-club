@@ -90,7 +90,8 @@ public partial class LotteryPage : ContentPage
     }
     private async void pickArtButtonClicked(object sender, EventArgs e)
     {
-        
+        //Navigate to the SelectArtPage and pass the winner member object to the page
+        await Navigation.PushAsync(new SelectArtPage(_dbService,_winnerMember));
     }
     private async void notInterestedButtonClicked(object sender, EventArgs e)
     {

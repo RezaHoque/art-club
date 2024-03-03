@@ -28,8 +28,10 @@ namespace artclub
             builder.Services.AddTransient<MemberPage>();
             builder.Services.AddTransient<ArtPage>();
             builder.Services.AddTransient<LotteryPage>();
+            builder.Services.AddTransient<SelectArtPage>();
+            builder.Services.AddTransient<LotteryResultPage>();
             //builder.UseUraniumUI();
-           // builder.UseUraniumUIMaterial();
+            // builder.UseUraniumUIMaterial();
 
 #if DEBUG
             builder.Logging.AddDebug();

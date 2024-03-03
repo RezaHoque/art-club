@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="artclub.Pages.SelectArtPage"
+              BackgroundColor="LightGray">
+    <VerticalStackLayout Padding="10" WidthRequest="1200">
+        <Label 
+            x:Name="winnerLabel"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            TextColor="Black"
+            FontSize="30"/>
+        <CollectionView x:Name="artCollectionView"
+                             SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                      Span="3" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.RowSpan="3"
+                                    Grid.Column="0"
+                                    Source="{Binding ImageUrl}"
+                                    Aspect="AspectFill"
+                                    HeightRequest="150"
+                                    WidthRequest="150"
+                                    VerticalOptions="Center"
+                               >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="art_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Title}"
+                                    FontAttributes="Bold"
+                               TextColor="Black"/>
+                        <Label Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Price}" 
+                               TextColor="Black"/>
+                        <Label Grid.Row="2"
+                                    Grid.Column="1"
+                                    Text="{Binding Description}" 
+                               TextColor="Black"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+    </VerticalStackLayout>
+</ContentPage>
