@@ -37,7 +37,7 @@ public partial class SelectArtPage : ContentPage
                         await _dbService.UpdateDrawAsync(draw);
                     }
                     
-                    await DisplayAlert("Success", "Art object saved to database!", "OK");
+                    await DisplayAlert("Success", "Art is saved to database!", "OK");
                     await Navigation.PushAsync(new LotteryPage(_dbService));
                 }
             }

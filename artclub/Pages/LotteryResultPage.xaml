@@ -25,13 +25,13 @@
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Batch ID" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
-                <Label Text="Member ID" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
-                <Label Text="Member Name" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
-                
-                <Label Text="Art ID" Grid.Row="0" Grid.Column="3" TextColor="Black"/>
-                <Label Text="Absent" Grid.Row="0" Grid.Column="4" TextColor="Black"/>
-                <Label Text="Not interested" Grid.Row="0" Grid.Column="5" TextColor="Black"/>
+                <Label Text="Batch ID" Grid.Row="0" Grid.Column="0" TextColor="Black" FontAttributes="Bold"/>
+                <Label Text="Member ID" Grid.Row="0" Grid.Column="1" TextColor="Black" FontAttributes="Bold"/>
+                <Label Text="Member Name" Grid.Row="0" Grid.Column="2" TextColor="Black" FontAttributes="Bold"/>
+
+                <Label Text="Art ID" Grid.Row="0" Grid.Column="3" TextColor="Black" FontAttributes="Bold"/>
+                <Label Text="Absent" Grid.Row="0" Grid.Column="4" TextColor="Black" FontAttributes="Bold"/>
+                <Label Text="Not interested" Grid.Row="0" Grid.Column="5" TextColor="Black" FontAttributes="Bold"/>
                 <!-- Add more labels for other column headers as needed -->
 
                 <!-- ListView with data -->
@@ -58,9 +58,7 @@
                                     <Label Text="{Binding ArtId}" Grid.Column="3" TextColor="Black"/>
                                     <Label Text="{Binding IsAbsent}" Grid.Column="4" TextColor="Black"/>
                                     <Label Text="{Binding IsNotInterested}" Grid.Column="5" TextColor="Black"/>
-                                    
-                                    
-                                    <!-- Add more labels for other properties as needed -->
+                                   
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

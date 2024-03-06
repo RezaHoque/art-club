@@ -20,11 +20,11 @@ public partial class ArtPage : ContentPage
     {
         if(_editArtId == 0)
         {
-            if (string.IsNullOrEmpty(priceEntryField.Text) || string.IsNullOrEmpty(artistEntryField.Text))
-            {
-                await DisplayAlert("Error", "Price and Artist are required", "Ok");
-                return;
-            }
+            //if (string.IsNullOrEmpty(priceEntryField.Text) || string.IsNullOrEmpty(artistEntryField.Text))
+            //{
+            //    await DisplayAlert("Error", "Price and Artist are required", "Ok");
+            //    return;
+            //}
             await _dbService.CreateArtAsync(new Models.Art
             {
                 Title = titleEntryField.Text,
@@ -62,6 +62,7 @@ public partial class ArtPage : ContentPage
         batchEntryField.Text = string.Empty;
         filePathLabel.Text = string.Empty;
         imagePreview.Source = null;
+        imagePreview.IsVisible = false;
         artCollection.ItemsSource = await _dbService.GetArtsAsync();
 
     }
@@ -80,14 +81,17 @@ public partial class ArtPage : ContentPage
             imagePreview.WidthRequest = 300;
             imagePreview.Margin = new Thickness(3, 3, 3, 3);
             imagePreview.Source = ImageSource.FromStream(() => new MemoryStream(bytes));
+            imagePreview.IsVisible = true;
 
             filePathLabel.Text = result.FullPath;
         }
     }
 
-    private async void artCollection_ItemTapped(object sender, ItemTappedEventArgs e)
+    private async void artCollection_ItemTapped(object sender, EventArgs e)
     {
-        var art = e.Item as Models.Art;
+        //var art = e.Item as Models.Art;
+        var image = (Image)sender;
+        var art = (Art)image.BindingContext;
         var action = await DisplayActionSheet("Actions", "Cancel", null, "Edit", "Delete");
         switch (action)
         {
@@ -101,7 +105,8 @@ public partial class ArtPage : ContentPage
                 batchEntryField.Text = art.Batch;
                 filePathLabel.Text = art.ImageUrl;
                 imagePreview.Source = ImageSource.FromFile(art.ImageUrl);
-                
+                imagePreview.IsVisible = true;
+
                 break;
             case "Delete":
                 await _dbService.DeleteArtAsync(art);
